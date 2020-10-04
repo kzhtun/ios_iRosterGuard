@@ -3,27 +3,61 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BB3713A2526F77A003EF59D /* JobListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB371392526F77A003EF59D /* JobListViewController.swift */; };
 		2BDF500725204E430064FBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500625204E430064FBB8 /* AppDelegate.swift */; };
 		2BDF500925204E430064FBB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500825204E430064FBB8 /* SceneDelegate.swift */; };
-		2BDF500B25204E430064FBB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500A25204E430064FBB8 /* ViewController.swift */; };
+		2BDF500B25204E430064FBB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500A25204E430064FBB8 /* LoginViewController.swift */; };
 		2BDF500E25204E430064FBB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF500C25204E430064FBB8 /* Main.storyboard */; };
 		2BDF501025204E460064FBB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF500F25204E460064FBB8 /* Assets.xcassets */; };
 		2BDF501325204E460064FBB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF501125204E460064FBB8 /* LaunchScreen.storyboard */; };
+		2BF083EA2520822F007D3ECA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF083E92520822F007D3ECA /* Router.swift */; };
+		2BF083ED252085E4007D3ECA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF083EC252085E4007D3ECA /* Util.swift */; };
+		2BF083F1252088BD007D3ECA /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF083F0252088BD007D3ECA /* ResponseObject.swift */; };
+		2BF083F425208A6F007D3ECA /* SiteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF083F325208A6F007D3ECA /* SiteDetail.swift */; };
+		2BF083F825208AC2007D3ECA /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF083F725208AC2007D3ECA /* JobDetail.swift */; };
+		2BF0848625247C90007D3ECA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0848525247C90007D3ECA /* MainViewController.swift */; };
+		2BF0849925258A64007D3ECA /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0849825258A64007D3ECA /* MenuController.swift */; };
+		2BF8F1BD2528EC0A000C4A32 /* SiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8F1BB2528EC0A000C4A32 /* SiteTableViewCell.swift */; };
+		2BF8F1BE2528EC0A000C4A32 /* SiteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8F1BC2528EC0A000C4A32 /* SiteTableViewCell.xib */; };
+		2BF8F1C22528F056000C4A32 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8F1C02528F056000C4A32 /* JobTableViewCell.swift */; };
+		2BF8F1C32528F056000C4A32 /* JobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8F1C12528F056000C4A32 /* JobTableViewCell.xib */; };
+		2BF8F1E92529804C000C4A32 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8F1E82529804C000C4A32 /* ItemTableViewCell.swift */; };
+		2BF8F1EC2529828A000C4A32 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8F1EB2529828A000C4A32 /* HeaderTableViewCell.swift */; };
+		2BF8F1EF252982FC000C4A32 /* FooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8F1EE252982FC000C4A32 /* FooterTableViewCell.swift */; };
+		CBEDF9BE0549C1A3D2C0AF12 /* Pods_iRosterGuard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D666C4B3214A9D5085059 /* Pods_iRosterGuard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BB371392526F77A003EF59D /* JobListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListViewController.swift; sourceTree = "<group>"; };
 		2BDF500325204E430064FBB8 /* iRosterGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRosterGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF500625204E430064FBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BDF500825204E430064FBB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2BDF500A25204E430064FBB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BDF500A25204E430064FBB8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2BDF500D25204E430064FBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BDF500F25204E460064FBB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BDF501225204E460064FBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BDF501425204E460064FBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BF083E92520822F007D3ECA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		2BF083EC252085E4007D3ECA /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		2BF083F0252088BD007D3ECA /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
+		2BF083F325208A6F007D3ECA /* SiteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteDetail.swift; sourceTree = "<group>"; };
+		2BF083F725208AC2007D3ECA /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
+		2BF0848525247C90007D3ECA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2BF0849825258A64007D3ECA /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		2BF8F1BB2528EC0A000C4A32 /* SiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTableViewCell.swift; sourceTree = "<group>"; };
+		2BF8F1BC2528EC0A000C4A32 /* SiteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SiteTableViewCell.xib; sourceTree = "<group>"; };
+		2BF8F1C02528F056000C4A32 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		2BF8F1C12528F056000C4A32 /* JobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTableViewCell.xib; sourceTree = "<group>"; };
+		2BF8F1E82529804C000C4A32 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		2BF8F1EB2529828A000C4A32 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2BF8F1EE252982FC000C4A32 /* FooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterTableViewCell.swift; sourceTree = "<group>"; };
+		69A0FEF2853D9B766801FA9B /* Pods-iRosterGuard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iRosterGuard.release.xcconfig"; path = "Target Support Files/Pods-iRosterGuard/Pods-iRosterGuard.release.xcconfig"; sourceTree = "<group>"; };
+		813D666C4B3214A9D5085059 /* Pods_iRosterGuard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iRosterGuard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1059DF99AFE6EAEFCFA896A /* Pods-iRosterGuard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iRosterGuard.debug.xcconfig"; path = "Target Support Files/Pods-iRosterGuard/Pods-iRosterGuard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +65,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEDF9BE0549C1A3D2C0AF12 /* Pods_iRosterGuard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220317950242614DC29400F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				813D666C4B3214A9D5085059 /* Pods_iRosterGuard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BB3713C25273D2A003EF59D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2BF8F1BB2528EC0A000C4A32 /* SiteTableViewCell.swift */,
+				2BF8F1BC2528EC0A000C4A32 /* SiteTableViewCell.xib */,
+				2BF8F1C02528F056000C4A32 /* JobTableViewCell.swift */,
+				2BF8F1C12528F056000C4A32 /* JobTableViewCell.xib */,
+				2BF8F1E82529804C000C4A32 /* ItemTableViewCell.swift */,
+				2BF8F1EB2529828A000C4A32 /* HeaderTableViewCell.swift */,
+				2BF8F1EE252982FC000C4A32 /* FooterTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2BDF4FFA25204E430064FBB8 = {
 			isa = PBXGroup;
 			children = (
 				2BDF500525204E430064FBB8 /* iRosterGuard */,
 				2BDF500425204E430064FBB8 /* Products */,
+				80ED9C2BA1E8423A60FD2826 /* Pods */,
+				220317950242614DC29400F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +115,57 @@
 		2BDF500525204E430064FBB8 /* iRosterGuard */ = {
 			isa = PBXGroup;
 			children = (
-				2BDF500625204E430064FBB8 /* AppDelegate.swift */,
-				2BDF500825204E430064FBB8 /* SceneDelegate.swift */,
-				2BDF500A25204E430064FBB8 /* ViewController.swift */,
-				2BDF500C25204E430064FBB8 /* Main.storyboard */,
+				2BB3713C25273D2A003EF59D /* Cells */,
+				2BF083EF25208759007D3ECA /* Models */,
+				2BF083E8252081FE007D3ECA /* Network */,
+				2BF083E425205E5F007D3ECA /* Main */,
 				2BDF500F25204E460064FBB8 /* Assets.xcassets */,
 				2BDF501125204E460064FBB8 /* LaunchScreen.storyboard */,
 				2BDF501425204E460064FBB8 /* Info.plist */,
 			);
 			path = iRosterGuard;
+			sourceTree = "<group>";
+		};
+		2BF083E425205E5F007D3ECA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2BDF500C25204E430064FBB8 /* Main.storyboard */,
+				2BDF500625204E430064FBB8 /* AppDelegate.swift */,
+				2BDF500825204E430064FBB8 /* SceneDelegate.swift */,
+				2BDF500A25204E430064FBB8 /* LoginViewController.swift */,
+				2BF0848525247C90007D3ECA /* MainViewController.swift */,
+				2BF0849825258A64007D3ECA /* MenuController.swift */,
+				2BB371392526F77A003EF59D /* JobListViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2BF083E8252081FE007D3ECA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2BF083E92520822F007D3ECA /* Router.swift */,
+				2BF083EC252085E4007D3ECA /* Util.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2BF083EF25208759007D3ECA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2BF083F0252088BD007D3ECA /* ResponseObject.swift */,
+				2BF083F325208A6F007D3ECA /* SiteDetail.swift */,
+				2BF083F725208AC2007D3ECA /* JobDetail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80ED9C2BA1E8423A60FD2826 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1059DF99AFE6EAEFCFA896A /* Pods-iRosterGuard.debug.xcconfig */,
+				69A0FEF2853D9B766801FA9B /* Pods-iRosterGuard.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BDF501725204E460064FBB8 /* Build configuration list for PBXNativeTarget "iRosterGuard" */;
 			buildPhases = (
+				18D4F72F9390BB1656EBAF15 /* [CP] Check Pods Manifest.lock */,
 				2BDF4FFF25204E430064FBB8 /* Sources */,
 				2BDF500025204E430064FBB8 /* Frameworks */,
 				2BDF500125204E430064FBB8 /* Resources */,
+				F658C3E07AF298F2B3C0E19E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,21 +228,78 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BDF501325204E460064FBB8 /* LaunchScreen.storyboard in Resources */,
+				2BF8F1BE2528EC0A000C4A32 /* SiteTableViewCell.xib in Resources */,
 				2BDF501025204E460064FBB8 /* Assets.xcassets in Resources */,
 				2BDF500E25204E430064FBB8 /* Main.storyboard in Resources */,
+				2BF8F1C32528F056000C4A32 /* JobTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18D4F72F9390BB1656EBAF15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iRosterGuard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F658C3E07AF298F2B3C0E19E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iRosterGuard/Pods-iRosterGuard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iRosterGuard/Pods-iRosterGuard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iRosterGuard/Pods-iRosterGuard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BDF4FFF25204E430064FBB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BDF500B25204E430064FBB8 /* ViewController.swift in Sources */,
+				2BF0849925258A64007D3ECA /* MenuController.swift in Sources */,
+				2BF8F1EC2529828A000C4A32 /* HeaderTableViewCell.swift in Sources */,
+				2BF083EA2520822F007D3ECA /* Router.swift in Sources */,
+				2BF083F1252088BD007D3ECA /* ResponseObject.swift in Sources */,
+				2BDF500B25204E430064FBB8 /* LoginViewController.swift in Sources */,
+				2BF083ED252085E4007D3ECA /* Util.swift in Sources */,
+				2BF8F1EF252982FC000C4A32 /* FooterTableViewCell.swift in Sources */,
+				2BF083F825208AC2007D3ECA /* JobDetail.swift in Sources */,
 				2BDF500725204E430064FBB8 /* AppDelegate.swift in Sources */,
+				2BB3713A2526F77A003EF59D /* JobListViewController.swift in Sources */,
+				2BF0848625247C90007D3ECA /* MainViewController.swift in Sources */,
+				2BF8F1BD2528EC0A000C4A32 /* SiteTableViewCell.swift in Sources */,
 				2BDF500925204E430064FBB8 /* SceneDelegate.swift in Sources */,
+				2BF083F425208A6F007D3ECA /* SiteDetail.swift in Sources */,
+				2BF8F1E92529804C000C4A32 /* ItemTableViewCell.swift in Sources */,
+				2BF8F1C22528F056000C4A32 /* JobTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +443,7 @@
 		};
 		2BDF501825204E460064FBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1059DF99AFE6EAEFCFA896A /* Pods-iRosterGuard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +463,7 @@
 		};
 		2BDF501925204E460064FBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69A0FEF2853D9B766801FA9B /* Pods-iRosterGuard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
