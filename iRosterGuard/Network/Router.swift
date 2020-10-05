@@ -56,7 +56,7 @@ class Router{
         
         
         let url = String(format: "%@%@/%@,%@,%@,%@,%@,%@", baseURL, "getGuardJobs",
-                         "09-14-2020","09-20-2020",
+                         sDate, eDate,
                          guardCode, "SITE", getSecretKey(), getMobileKey())
         
         AF.request(url, method: .get, headers: headers)

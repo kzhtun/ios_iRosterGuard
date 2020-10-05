@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B5DD254252ADDF70094183E /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DD253252ADDF70094183E /* ItemListTableViewCell.swift */; };
 		2BB3713A2526F77A003EF59D /* JobListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB371392526F77A003EF59D /* JobListViewController.swift */; };
 		2BDF500725204E430064FBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500625204E430064FBB8 /* AppDelegate.swift */; };
 		2BDF500925204E430064FBB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500825204E430064FBB8 /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B5DD253252ADDF70094183E /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
 		2BB371392526F77A003EF59D /* JobListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListViewController.swift; sourceTree = "<group>"; };
 		2BDF500325204E430064FBB8 /* iRosterGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRosterGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF500625204E430064FBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				2BF8F1E82529804C000C4A32 /* ItemTableViewCell.swift */,
 				2BF8F1EB2529828A000C4A32 /* HeaderTableViewCell.swift */,
 				2BF8F1EE252982FC000C4A32 /* FooterTableViewCell.swift */,
+				2B5DD253252ADDF70094183E /* ItemListTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -115,6 +118,7 @@
 		2BDF500525204E430064FBB8 /* iRosterGuard */ = {
 			isa = PBXGroup;
 			children = (
+				2BF8F28A2529ECC4000C4A32 /* Utils */,
 				2BB3713C25273D2A003EF59D /* Cells */,
 				2BF083EF25208759007D3ECA /* Models */,
 				2BF083E8252081FE007D3ECA /* Network */,
@@ -157,6 +161,13 @@
 				2BF083F725208AC2007D3ECA /* JobDetail.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2BF8F28A2529ECC4000C4A32 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		80ED9C2BA1E8423A60FD2826 /* Pods */ = {
@@ -284,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5DD254252ADDF70094183E /* ItemListTableViewCell.swift in Sources */,
 				2BF0849925258A64007D3ECA /* MenuController.swift in Sources */,
 				2BF8F1EC2529828A000C4A32 /* HeaderTableViewCell.swift in Sources */,
 				2BF083EA2520822F007D3ECA /* Router.swift in Sources */,
@@ -456,6 +468,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.info121.iRosterGuard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,6 +489,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.info121.iRosterGuard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

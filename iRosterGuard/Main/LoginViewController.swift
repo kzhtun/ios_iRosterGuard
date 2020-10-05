@@ -5,8 +5,11 @@
 //  Created by Kyaw Zin Htun on 27/09/2020.
 //
 
+
 import UIKit
 import Toast_Swift
+import BEMCheckBox
+
 
 class LoginViewController: UIViewController {
     
@@ -14,9 +17,10 @@ class LoginViewController: UIViewController {
     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     
+    @IBOutlet weak var mRemember: BEMCheckBox!
+    
     @IBOutlet weak var mTitle: UILabel!
     @IBOutlet weak var loginView: UIView!
-    
     
     @IBOutlet weak var mGuardId: UITextField!
     @IBOutlet weak var mGuardIdLabel: UILabel!
@@ -66,7 +70,12 @@ class LoginViewController: UIViewController {
         mGuardId.text = "zTEST001"
         mPassword.text = "p@ssw0rd"
         
-       
+//        mRemember.boxType = BEMBoxType.square
+//       
+//        mRemember.lineWidth = 3
+//        mRemember.animationDuration = 0.2
+        
+        
         print( getSecretKey(), getMobileKey())
     }
     

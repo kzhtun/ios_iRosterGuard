@@ -23,6 +23,14 @@ class MainViewController: UIViewController, LMCSideMenuCenterControllerProtocol,
         mTitle.textColor = UIColor.white
         mSubTitle.textColor = UIColor.white
         
+        let currentDate = Date()
+        
+        // display format
+        let format = DateFormatter()
+        format.dateFormat = "E, dd-MMM-yyyy"
+        format.timeZone = .some(TimeZone(abbreviation: "UTC+08")!)
+        mSubTitle.text = format.string(from: currentDate).uppercased()
+  
         mCalendar.layer.cornerRadius = 10;
         mCalendar.layer.masksToBounds = true;
         
@@ -39,7 +47,6 @@ class MainViewController: UIViewController, LMCSideMenuCenterControllerProtocol,
         let menuController = storyboard?.instantiateViewController(withIdentifier: String(describing: MenuController.self)) as! MenuController
        
         //Setup menu
-        
         setupMenu(leftMenu: menuController, rightMenu: nil)
         
         //enable screen edge gestures if needed
@@ -50,8 +57,11 @@ class MainViewController: UIViewController, LMCSideMenuCenterControllerProtocol,
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+      
         let vc = self.storyBoard.instantiateViewController(withIdentifier: "JobListVC") as! JobListViewController
-        
+
+        vc.selectDate = date
+
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }

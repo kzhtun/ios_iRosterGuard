@@ -28,6 +28,13 @@ class ItemTableViewCell: UITableViewCell {
     }
     
     public func configuretHeader(){
+        
+        mSr.text = "SR"
+        mDate.text = "DATE"
+        mPosition.text = "POS"
+        mStatus.text = "STATUS"
+        
+        
         mSr.textColor = UIColor(hex: "#888888FF")
         mDate.textColor = UIColor(hex: "#888888FF")
         mPosition.textColor = UIColor(hex: "#888888FF")

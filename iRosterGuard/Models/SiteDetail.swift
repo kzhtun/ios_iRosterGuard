@@ -8,6 +8,15 @@
 import Foundation
 
 struct SiteDetail: Codable {
+    
+    
     var JobDetails: [JobDetail]
     var sitename: String
+    
+    internal init(JobDetails: [JobDetail], sitename: String) {
+        self.JobDetails = JobDetails
+        self.sitename = sitename
+    }
+    
+  
 }
