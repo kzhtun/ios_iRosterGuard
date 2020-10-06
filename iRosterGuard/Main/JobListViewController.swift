@@ -27,14 +27,13 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
     var refreshControl = UIRefreshControl()
     
    
-    
     @IBOutlet weak var btnListType: UIButton!
     @IBOutlet weak var MainTableView: UITableView!
     @IBOutlet weak var mTitle: UILabel!
     @IBOutlet weak var mSubTitle: UILabel!
     
+    
     @IBAction func menuOnClick(_ sender: Any) {
-        print("menu click")
         presentLeftMenu()
     }
     
@@ -61,8 +60,7 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
     }
     
     @IBAction func btnPrevOnClick(_ sender: Any) {
-    
-        var dateComponent = DateComponents()
+       var dateComponent = DateComponents()
         dateComponent.day = -7
         selectDate = Calendar.current.date(byAdding: dateComponent, to: selectDate)
         callGuardJobListBySite(date: selectDate)
@@ -82,12 +80,20 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
     override func viewWillAppear(_ animated: Bool) {
         mTitle.textColor = UIColor.white
         mSubTitle.textColor = UIColor.white
-        
-        
+       
         self.MainTableView.delegate = self
         self.MainTableView.dataSource = self
         //    self.MainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
+        if(isGroup){
+            btnListType.setImage(UIImage(named: "ic_group"), for: .normal)
+        }else{
+            btnListType.setImage(UIImage(named: "ic_list"), for: .normal)
+        }
+        
+        if(selectDate == nil){
+            selectDate = Date()
+        }
         callGuardJobListBySite(date: selectDate)
     }
     
@@ -111,22 +117,27 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         
         self.MainTableView.sectionFooterHeight = UITableView.automaticDimension
         self.MainTableView.estimatedSectionFooterHeight = 25
+        
+
        
-        self.MainTableView.separatorColor = self.MainTableView.backgroundColor
+      //  self.MainTableView.separatorColor = self.MainTableView.backgroundColor
         
         // pull to refresh
         
-        refreshControl.tintColor = UIColor.init(hex: "#3366CCFF")
+ //       refreshControl.tintColor = UIColor.init(hex: "#3366CCFF")
         
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hex: "#3366CCFF")]
-        let attributedTitle = NSAttributedString(string: "Refreshing ...", attributes: attributes)
+//        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hex: "#3366CCFF")]
+//        let attributedTitle = NSAttributedString(string: "Refreshing ...", attributes: attributes)
+//
+//        refreshControl.attributedTitle = attributedTitle
+//
+//        // refreshControl.attributedTitle = NSAttributedString(string: "Refreshing ...")
+//        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+//        MainTableView.addSubview(refreshControl)
         
-        refreshControl.attributedTitle = attributedTitle
         
-        // refreshControl.attributedTitle = NSAttributedString(string: "Refreshing ...")
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        MainTableView.addSubview(refreshControl)
-        
+        //enable screen edge gestures if needed
+        enableLeftMenuGesture()
        
     }
     
@@ -181,7 +192,7 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
             }
             
             self.MainTableView.reloadData()
-            self.refreshControl.endRefreshing()
+           // self.refreshControl.endRefreshing()
             
         }, failure: {
             (failureObject) in
@@ -210,10 +221,9 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
 
 
 
-
-
 // MARK: Extension
 extension JobListViewController: UITableViewDelegate, UITableViewDataSource{
+    
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -232,7 +242,24 @@ extension JobListViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return siteList.count
+        var sectionCount = 0
+        
+        if(siteList.count == 0){
+            // no data
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.MainTableView.bounds.size.width, height: self.MainTableView.bounds.size.height))
+                    noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor(hex: "#AAAAAAFF")
+            noDataLabel.textAlignment = NSTextAlignment.center
+                    self.MainTableView.backgroundView = noDataLabel
+            
+            sectionCount = 0
+
+        }else{
+            self.MainTableView.backgroundView = nil
+            sectionCount = siteList.count
+        }
+        
+        return sectionCount
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -278,6 +305,20 @@ extension JobListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     
+}
+
+
+extension UITableView {
+
+    func addTopBounceAreaView(color: UIColor = .white) {
+        var frame = UIScreen.main.bounds
+        frame.origin.y = -frame.size.height
+
+        let view = UIView(frame: frame)
+        view.backgroundColor = color
+
+        self.addSubview(view)
+    }
 }
 
 
