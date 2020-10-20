@@ -11,7 +11,7 @@ import Alamofire
 class Router{
     let App = UIApplication.shared.delegate as! AppDelegate
     static var instance: Router?
-    let baseURL = "http://info121.sytes.net:84/restapimetropolis/MyLimoService.svc/"
+    let baseURL = "http://info121.sytes.net/restapimetropolis/MyLimoService.svc/"
     
     
     //  @GET("validateuser/{guardcode},{password},{isNFC},{fcmToken},{secretkey},{mobilekey}")
@@ -45,7 +45,7 @@ class Router{
             }
     }
     
-    // http://info121.sytes.net:84/restapimetropolis/MyLimoService.svc/getGuardJobs/09-14-2020,09-20-2020,zTEST001,WEEK,info12101102020,chcchwhwhct
+   
     func GuardJobList(sDate: String, eDate: String, guardCode: String, type: String,
                       success: @escaping (_ responseObject: ResponseObject) -> Void, failure: @escaping (_ error: String) -> Void){
         
@@ -57,7 +57,7 @@ class Router{
         
         let url = String(format: "%@%@/%@,%@,%@,%@,%@,%@", baseURL, "getGuardJobs",
                          sDate, eDate,
-                         guardCode, "SITE", getSecretKey(), getMobileKey())
+                         guardCode, type, getSecretKey(), getMobileKey())
         
         AF.request(url, method: .get, headers: headers)
             .response{
@@ -79,6 +79,71 @@ class Router{
             }
     }
     
+  
+ 
+    func GerUserProfile(guardId: String,
+                      success: @escaping (_ responseObject: ResponseObject) -> Void, failure: @escaping (_ error: String) -> Void){
+        
+        let headers: HTTPHeaders = [
+            "driver": self.App.GUARD_ID,
+            "token": self.App.AUT_TOKEN
+        ]
+    
+        let url = String(format: "%@%@/%@,%@,%@", baseURL, "getUserProfile",
+                         guardId, getSecretKey(), getMobileKey())
+        
+        AF.request(url, method: .get, headers: headers)
+            .response{
+                (response) in
+                
+                guard let data = response.data else{
+                    print("GerUserProfile Success, No Data")
+                    return
+                }
+                do{
+                    let objRes = try JSONDecoder().decode(ResponseObject.self, from: data)
+                    
+                    success(objRes)
+                    
+                    print("GerUserProfile Success")
+                }catch{
+                    failure("GerUserProfile Failed")
+                }
+            }
+    }
+    
+    //     @GET("UpdatePassword/{guardId},{password},{secretkey},{mobileKey}")
+    func UpdatePassword(guardId: String, password: String,
+                      success: @escaping (_ responseObject: ResponseObject) -> Void, failure: @escaping (_ error: String) -> Void){
+        
+        let headers: HTTPHeaders = [
+            "driver": self.App.GUARD_ID,
+            "token": self.App.AUT_TOKEN
+        ]
+    
+        let url = String(format: "%@%@/%@,%@,%@,%@", baseURL, "UpdatePassword",
+                         guardId, password, getSecretKey(), getMobileKey())
+        
+        AF.request(url, method: .get, headers: headers)
+            .response{
+                (response) in
+               
+                guard let data = response.data else{
+                    print("Update Password Success, No Data")
+                    return
+                }
+                
+                do{
+                    let objRes = try JSONDecoder().decode(ResponseObject.self, from: data)
+                    
+                    success(objRes)
+                    
+                    print("Update Password Success")
+                }catch{
+                    failure("Update Password Failed")
+                }
+            }
+    }
     
     
     static func sharedInstance() -> Router {
@@ -89,29 +154,4 @@ class Router{
     }
     
 }
-//    // @GET("unregisterdevice/{deviceId},{secretKey},{mobileKey}")
-//    func UnRegisterDevice(deviceId: String,
-//    success: @escaping (_ responseObject: ResponseObject) -> Void, failure: @escaping (_ error: String) -> Void){
-//
-//        let headers: HTTPHeaders = [
-//                  "driver": getDeviceID(),
-//                  "token": self.App.AUT_TOKEN
-//              ]
-//
-//        let url = String(format: "%@%@/%@,%@,%@", baseURL, "unregisterdevice", deviceId, getSecretKey(), getMobileKey())
-//
-//        AF.request(url, headers: headers)
-//            .response{
-//                (responseData) in
-//                guard let data = responseData.data else {return}
-//                do{
-//                    let objRes = try JSONDecoder().decode(ResponseObject.self, from: data)
-//
-//                    success(objRes)
-//
-//                    print("UnRegisterDevice Success")
-//                }catch{
-//                    failure("UnRegisterDevice Failed")
-//                }
-//        }
-//    }
+

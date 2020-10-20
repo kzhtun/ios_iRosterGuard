@@ -15,9 +15,8 @@ struct ResponseObject: Codable {
     var LevelNotCheckedDetails: String?
     
     var MessageDetails: String?
-    var ProfileDetails: String?
+    var ProfileDetails: [ProfileDetail]?
  
-    
     var RoundsDetails: String?
     let SiteDetails: [SiteDetail]?
     var UnitDetails: String?

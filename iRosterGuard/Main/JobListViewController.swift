@@ -50,22 +50,34 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         isGroup = !isGroup
         print("isGroup: \(isGroup)")
         
-        if(self.isGroup){
-            self.siteList = self.groupList
+        if(isGroup){
+            btnListType.setImage(UIImage(named: "ic_group"), for: .normal)
+            callGuardJobListBySite(date: selectDate)
+            self.MainTableView.separatorStyle = .singleLine
+            mTitle.text = "Job List by Site"
+            
         }else{
-            self.siteList = self.separatedList
+            btnListType.setImage(UIImage(named: "ic_list"), for: .normal)
+            callGuardJobListByWeek(date: selectDate)
+            self.MainTableView.separatorStyle = .none
+            mTitle.text = "Job List by Week"
+            
         }
         
-        MainTableView.reloadData()
+       // MainTableView.reloadData()
     }
     
     @IBAction func btnPrevOnClick(_ sender: Any) {
        var dateComponent = DateComponents()
         dateComponent.day = -7
         selectDate = Calendar.current.date(byAdding: dateComponent, to: selectDate)
-        callGuardJobListBySite(date: selectDate)
-        
-        MainTableView.tableHeaderView = nil
+       
+        if(isGroup){
+            callGuardJobListBySite(date: selectDate)
+        }else{
+            callGuardJobListByWeek(date: selectDate)
+        }
+       // MainTableView.tableHeaderView = nil
     }
     
     @IBAction func btnNextOnClick(_ sender: Any) {
@@ -73,7 +85,13 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         var dateComponent = DateComponents()
         dateComponent.day = 7
         selectDate = Calendar.current.date(byAdding: dateComponent, to: selectDate)
-        callGuardJobListBySite(date: selectDate)
+        if(isGroup){
+            callGuardJobListBySite(date: selectDate)
+          
+        }else{
+            callGuardJobListByWeek(date: selectDate)
+        
+        }
     }
     
     
@@ -84,22 +102,26 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         self.MainTableView.delegate = self
         self.MainTableView.dataSource = self
         //    self.MainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        if(isGroup){
-            btnListType.setImage(UIImage(named: "ic_group"), for: .normal)
-        }else{
-            btnListType.setImage(UIImage(named: "ic_list"), for: .normal)
-        }
-        
+       
         if(selectDate == nil){
             selectDate = Date()
         }
-        callGuardJobListBySite(date: selectDate)
+        
+        if(isGroup){
+            btnListType.setImage(UIImage(named: "ic_group"), for: .normal)
+            callGuardJobListBySite(date: selectDate)
+            self.MainTableView.separatorStyle = .singleLine
+            mTitle.text = "Job List by Site"
+        }else{
+            btnListType.setImage(UIImage(named: "ic_list"), for: .normal)
+            callGuardJobListByWeek(date: selectDate)
+            self.MainTableView.separatorStyle = .none
+            mTitle.text = "Job List by Week"
+            
+        }
+       
     }
     
-    func calculateDates(date: Date){
-        presentLeftMenu()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +141,16 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         self.MainTableView.estimatedSectionFooterHeight = 25
         
 
+        
+//        var frame = self.MainTableView.bounds
+//        frame.origin.y = -frame.size.height
+//        let topView = UIView(frame: frame)
+//        topView.backgroundColor = self.MainTableView.backgroundColor
+//        self.MainTableView.addSubview(topView)
+//
+//        let bottomView = UIView(frame: frame)
+//        bottomView.backgroundColor = self.MainTableView.backgroundColor
+//     self.MainTableView.tableFooterView = bottomView
        
       //  self.MainTableView.separatorColor = self.MainTableView.backgroundColor
         
@@ -147,9 +179,8 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
       callGuardJobListBySite(date: selectDate)
     }
     
-    private func callGuardJobListBySite(date: Date){
-        self.siteList.removeAll()
-        
+    
+    private func calculateDates(date: Date){
         // calculate dates
         let format = DateFormatter()
         format.timeZone = .some(TimeZone(abbreviation: "UTC+08")!)
@@ -163,26 +194,19 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
         
         format.dateFormat = "dd MMM"
         mSubTitle.text = "\(format.string(from: sDate )) ~ \(format.string(from: eDate ))".uppercased()
+    }
+    
+    private func callGuardJobListByWeek(date: Date){
+        self.siteList.removeAll()
         
-        //        print("Select Date : \(selectDate)")
-        //        print("Select sDate : \(sDate)")
-        //        print("Select eDate : \(eDate)")
+        calculateDates(date: date)
         
-        Router.sharedInstance().GuardJobList(sDate: sDateString, eDate: eDateString, guardCode: App.GUARD_ID, type: "SITE",  success:  {
+        Router.sharedInstance().GuardJobList(sDate: sDateString, eDate: eDateString, guardCode: App.GUARD_ID, type: "WEEK",  success:  {
             (successObject) in
             
             if( successObject.responsemessage?.uppercased() == "SUCCESS"){
                 if(successObject.SiteDetails!.count > 0){
-                    
-                    self.groupList = successObject.SiteDetails!
-                    self.separatedList = self.refectorSiteList(jobList: successObject.SiteDetails!)
-                    
-                    if(self.isGroup){
-                        self.siteList = self.groupList
-                    }else{
-                        self.siteList = self.separatedList
-                    }
-                    
+                    self.siteList = self.refectorSiteList(jobList: successObject.SiteDetails!)
                 }
                 
                 self.view.makeToast("Fetching Job List Success ")
@@ -192,6 +216,41 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
             }
             
             self.MainTableView.reloadData()
+           // self.refreshControl.endRefreshing()
+            
+        }, failure: {
+            (failureObject) in
+            print(failureObject as Any)
+        })
+    }
+    
+    private func callGuardJobListBySite(date: Date){
+        self.siteList.removeAll()
+        
+        calculateDates(date: date)
+        
+        Router.sharedInstance().GuardJobList(sDate: sDateString, eDate: eDateString, guardCode: App.GUARD_ID, type: "SITE",  success:  {
+            (successObject) in
+            
+            if( successObject.responsemessage?.uppercased() == "SUCCESS"){
+                if(successObject.SiteDetails!.count > 0){
+//                    self.groupList = successObject.SiteDetails!
+//                    if(self.isGroup){
+//                        self.siteList = self.groupList
+//                    }else{
+//                        self.siteList = self.separatedList
+//                    }
+                    
+                    self.siteList = successObject.SiteDetails!
+                }
+                
+                self.view.makeToast("Fetching Job List Successful ")
+                
+            }else{ // open Message List Screen
+                self.view.makeToast(successObject.responsemessage)
+            }
+            
+           self.MainTableView.reloadData()
            // self.refreshControl.endRefreshing()
             
         }, failure: {
@@ -223,9 +282,7 @@ class JobListViewController: UIViewController, LMCSideMenuCenterControllerProtoc
 
 // MARK: Extension
 extension JobListViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    
-    
+   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as! HeaderTableViewCell
         

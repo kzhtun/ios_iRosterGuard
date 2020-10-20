@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2B5DD254252ADDF70094183E /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DD253252ADDF70094183E /* ItemListTableViewCell.swift */; };
 		2BB1EB2E252C7E9C00C9C596 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1EB2D252C7E9C00C9C596 /* MenuTableViewCell.swift */; };
+		2BB1EB43252D8EC900C9C596 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1EB42252D8EC900C9C596 /* ProfileViewController.swift */; };
+		2BB1EB46252DAE5C00C9C596 /* ProfileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1EB45252DAE5C00C9C596 /* ProfileDetail.swift */; };
+		2BB1EC052536B94E00C9C596 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BB1EC042536B94D00C9C596 /* GoogleService-Info.plist */; };
 		2BB3713A2526F77A003EF59D /* JobListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB371392526F77A003EF59D /* JobListViewController.swift */; };
 		2BDF500725204E430064FBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500625204E430064FBB8 /* AppDelegate.swift */; };
 		2BDF500925204E430064FBB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF500825204E430064FBB8 /* SceneDelegate.swift */; };
@@ -37,6 +40,10 @@
 		261C9917D2C35DDE519973A7 /* Pods_iRosterGuard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iRosterGuard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5DD253252ADDF70094183E /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
 		2BB1EB2D252C7E9C00C9C596 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		2BB1EB42252D8EC900C9C596 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2BB1EB45252DAE5C00C9C596 /* ProfileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail.swift; sourceTree = "<group>"; };
+		2BB1EBFF2536B88500C9C596 /* iRosterGuard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iRosterGuard.entitlements; sourceTree = "<group>"; };
+		2BB1EC042536B94D00C9C596 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BB371392526F77A003EF59D /* JobListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListViewController.swift; sourceTree = "<group>"; };
 		2BDF500325204E430064FBB8 /* iRosterGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRosterGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDF500625204E430064FBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,13 +120,14 @@
 		2BDF500525204E430064FBB8 /* iRosterGuard */ = {
 			isa = PBXGroup;
 			children = (
-				2BF8F28A2529ECC4000C4A32 /* Utils */,
+				2BB1EBFF2536B88500C9C596 /* iRosterGuard.entitlements */,
 				2BB3713C25273D2A003EF59D /* Cells */,
 				2BF083EF25208759007D3ECA /* Models */,
 				2BF083E8252081FE007D3ECA /* Network */,
 				2BF083E425205E5F007D3ECA /* Main */,
 				2BDF500F25204E460064FBB8 /* Assets.xcassets */,
 				2BDF501125204E460064FBB8 /* LaunchScreen.storyboard */,
+				2BB1EC042536B94D00C9C596 /* GoogleService-Info.plist */,
 				2BDF501425204E460064FBB8 /* Info.plist */,
 			);
 			path = iRosterGuard;
@@ -135,6 +143,7 @@
 				2BF0848525247C90007D3ECA /* MainViewController.swift */,
 				2BF0849825258A64007D3ECA /* MenuController.swift */,
 				2BB371392526F77A003EF59D /* JobListViewController.swift */,
+				2BB1EB42252D8EC900C9C596 /* ProfileViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -154,15 +163,9 @@
 				2BF083F0252088BD007D3ECA /* ResponseObject.swift */,
 				2BF083F325208A6F007D3ECA /* SiteDetail.swift */,
 				2BF083F725208AC2007D3ECA /* JobDetail.swift */,
+				2BB1EB45252DAE5C00C9C596 /* ProfileDetail.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		2BF8F28A2529ECC4000C4A32 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		7CFF96666CB29DF345E9E527 /* Frameworks */ = {
@@ -246,6 +249,7 @@
 				2BDF501025204E460064FBB8 /* Assets.xcassets in Resources */,
 				2BDF500E25204E430064FBB8 /* Main.storyboard in Resources */,
 				2BF8F1C32528F056000C4A32 /* JobTableViewCell.xib in Resources */,
+				2BB1EC052536B94E00C9C596 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +311,12 @@
 				2BF083ED252085E4007D3ECA /* Util.swift in Sources */,
 				2BF8F1EF252982FC000C4A32 /* FooterTableViewCell.swift in Sources */,
 				2BF083F825208AC2007D3ECA /* JobDetail.swift in Sources */,
+				2BB1EB43252D8EC900C9C596 /* ProfileViewController.swift in Sources */,
 				2BDF500725204E430064FBB8 /* AppDelegate.swift in Sources */,
 				2BB3713A2526F77A003EF59D /* JobListViewController.swift in Sources */,
 				2BF0848625247C90007D3ECA /* MainViewController.swift in Sources */,
 				2BF8F1BD2528EC0A000C4A32 /* SiteTableViewCell.swift in Sources */,
+				2BB1EB46252DAE5C00C9C596 /* ProfileDetail.swift in Sources */,
 				2BDF500925204E430064FBB8 /* SceneDelegate.swift in Sources */,
 				2BB1EB2E252C7E9C00C9C596 /* MenuTableViewCell.swift in Sources */,
 				2BF083F425208A6F007D3ECA /* SiteDetail.swift in Sources */,
@@ -463,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iRosterGuard/iRosterGuard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X32A6FCDS6;
@@ -476,7 +483,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -486,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iRosterGuard/iRosterGuard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X32A6FCDS6;
@@ -499,7 +507,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

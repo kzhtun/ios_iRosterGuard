@@ -13,11 +13,13 @@ class MenuController: UIViewController {
     
     @IBOutlet weak var MenuTableView: UITableView!
     
+    @IBOutlet weak var mWelcomeMsg: UILabel!
+    @IBOutlet weak var mLastLogin: UILabel!
     
     var menuArray = [
-        ["m_dashboard", "DASHBOARD"],
-        ["m_joblist", "JOBLIST by SITE"],
-        ["m_joblist", "JOBLIST by WEEK"],
+        ["m_dashboard", "CALENDAR"],
+        ["m_joblist", "JOB LIST by SITE"],
+        ["m_joblist", "JOB LIST by WEEK"],
         ["m_profile", "PROFILE"],
         ["m_logout", "LOGOUT"]
     ]
@@ -26,6 +28,14 @@ class MenuController: UIViewController {
         super.viewDidLoad()
         self.MenuTableView.tableFooterView = UIView()
        
+        mWelcomeMsg.text = "Welcome " + App.currentProfile!.guardname
+        
+        let format = DateFormatter()
+        format.timeZone = .some(TimeZone(abbreviation: "UTC+08")!)
+        format.dateFormat = "dd-MMM-yyyy hh:mm a"
+        
+        mLastLogin.text = "Last Login: \(format.string(from: Date()))"
+        
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +89,20 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
             self.present(jobVC, animated: false, completion: nil)
             break
 
+        case 3:
+            let profileVC = self.storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+          
+            profileVC.modalPresentationStyle = .fullScreen
+            self.present(profileVC, animated: false, completion: nil)
+            break
+            
+        case 4:
+            let loginVC = self.storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+          
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: false, completion: nil)
+            break
+            
         default:
             print("Click Default")
         }

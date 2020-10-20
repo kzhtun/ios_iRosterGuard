@@ -69,6 +69,15 @@ class LoginViewController: UIViewController {
         
         mGuardId.text = "zTEST001"
         mPassword.text = "p@ssw0rd"
+
+        
+        mGuardId.layer.cornerRadius = 15.0
+        mGuardId.layer.masksToBounds = true
+        mGuardId.setLeftPaddingPoints(10)
+        
+        mPassword.layer.cornerRadius = 15.0
+        mPassword.layer.masksToBounds = true
+        mPassword.setLeftPaddingPoints(10)
         
 //        mRemember.boxType = BEMBoxType.square
 //       
@@ -101,6 +110,8 @@ class LoginViewController: UIViewController {
                 App.GUARD_ID = mGuardId.text!
                 App.AUT_TOKEN = successObject.token!
                 
+                callGetProfile()
+                
                 let mainVC = self.storyBoard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
                 
                 mainVC.modalPresentationStyle = .fullScreen
@@ -109,12 +120,8 @@ class LoginViewController: UIViewController {
             }else{ // open Message List Screen
             //    self.dismissAlert()
                 self.view.makeToast("INVALID")
-                //                self.view.makeToast("Registered device found.")
-                //                self.App.AUT_TOKEN = successObject.token!
-                //                self.getUserHP()
-                     
-                self.mGuardIdLabel.text = "Guard ID and Password does not match"
                
+                self.mGuardIdLabel.text = "Guard ID and Password does not match"
             }
             
             print(successObject)
@@ -126,6 +133,30 @@ class LoginViewController: UIViewController {
         })
         
     }
+    
+    
+    
+    private func callGetProfile(){
+        Router.sharedInstance().GerUserProfile(guardId: App.GUARD_ID, success:  {
+            (successObject) in
+            
+            if( successObject.responsemessage?.uppercased() == "SUCCESS"){
+               self.view.makeToast("Fetching profile data success ")
+                
+                self.App.currentProfile = successObject.ProfileDetails![0]
+                
+                
+                
+            }else{ // open Message List Screen
+                self.view.makeToast(successObject.responsemessage)
+            }
+            
+        }, failure: {
+            (failureObject) in
+            print(failureObject as Any)
+        })
+    }
+    
     
     private func showLoading(){
 //        let alert = UIAlertController(title: nil, message: "Authenticating ...", preferredStyle: .alert)
@@ -139,10 +170,28 @@ class LoginViewController: UIViewController {
 //        present(alert, animated: true, completion: nil)
     }
     
+    
+    
+    
+    
     internal func dismissAlert() {
         if let vc = self.presentedViewController, vc is UIAlertController {
             dismiss(animated: false, completion: nil)
         }
+    }
+}
+
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
     }
 }
 
