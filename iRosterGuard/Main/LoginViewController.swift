@@ -30,7 +30,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var mLogin: UIButton!
     
-    
+   @IBOutlet weak var loginTopConstraint: NSLayoutConstraint!
+   
     @IBAction func LoginOnClick(_ sender: UIButton) {
         
         if(validateFields()){
@@ -39,6 +40,7 @@ class LoginViewController: UIViewController {
     }
     
     
+   
     func validateFields()-> Bool{
         if(mGuardId.text == "") {
             mGuardIdLabel.text = "Guard ID should not be left blank"
@@ -67,10 +69,9 @@ class LoginViewController: UIViewController {
         mGuardIdLabel.text = " "
         mPasswordLabel.text = " "
         
-        mGuardId.text = "zTEST001"
-        mPassword.text = "p@ssw0rd"
-
-        
+//        mGuardId.text = "zTEST001"
+//        mPassword.text = "p@ssw0rd"
+     
         mGuardId.layer.cornerRadius = 15.0
         mGuardId.layer.masksToBounds = true
         mGuardId.setLeftPaddingPoints(10)
@@ -86,6 +87,18 @@ class LoginViewController: UIViewController {
         
         
         print( getSecretKey(), getMobileKey())
+      
+        registerKeyboardNotifications()
+      
+      // get pref data
+      let GuardID = UserDefaults.standard.string(forKey: "GuardID")
+      let GuardPassword = UserDefaults.standard.string(forKey: "GuardPassword")
+      
+      if(GuardID != nil){
+         mRemember.on = true
+         mGuardId.text = GuardID
+         mPassword.text = GuardPassword
+      }
     }
     
     override func viewDidLoad() {
@@ -93,6 +106,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         print("Main View  Success")
+      
     }
     
     
@@ -112,6 +126,12 @@ class LoginViewController: UIViewController {
                 
                 callGetProfile()
                 
+                if(mRemember.on){
+                  saveRememberMeInfo()
+                }else{
+                  deleteRememberMeInfo()
+                }
+               
                 let mainVC = self.storyBoard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
                 
                 mainVC.modalPresentationStyle = .fullScreen
@@ -134,8 +154,16 @@ class LoginViewController: UIViewController {
         
     }
     
-    
-    
+   private func saveRememberMeInfo(){
+      UserDefaults.standard.set(mGuardId.text, forKey: "GuardID")
+      UserDefaults.standard.set(mPassword.text, forKey: "GuardPassword")
+   }
+   
+   private func deleteRememberMeInfo(){
+      UserDefaults.standard.removeObject(forKey: "GuardID")
+      UserDefaults.standard.removeObject(forKey: "GuardPassword")
+   }
+   
     private func callGetProfile(){
         Router.sharedInstance().GerUserProfile(guardId: App.GUARD_ID, success:  {
             (successObject) in
@@ -144,8 +172,7 @@ class LoginViewController: UIViewController {
                self.view.makeToast("Fetching profile data success ")
                 
                 self.App.currentProfile = successObject.ProfileDetails![0]
-                
-                
+           
                 
             }else{ // open Message List Screen
                 self.view.makeToast(successObject.responsemessage)
@@ -192,6 +219,35 @@ extension UITextField {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
         self.rightViewMode = .always
+    }
+}
+
+
+extension LoginViewController {
+
+   
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+      loginTopConstraint.constant =  100
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+      print("keyboardWillHide")
     }
 }
 
